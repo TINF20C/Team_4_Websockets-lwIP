@@ -1,9 +1,3 @@
-# Customer Requirements Specification
+# Projetfiles
 
-The following points are noted here:
-- Goal
-- Product Environment
-- Product Usage
-- Product Data
-- Other Product Characteristics
-- References
+Contains the projectfiles.
