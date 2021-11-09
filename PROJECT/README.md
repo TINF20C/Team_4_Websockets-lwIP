@@ -2,4 +2,4 @@
 
 Contains the projectfiles.
 
-Link to Wiki: [Wiki](https://github.com/DekaAthlos/TINF19C-ModellingWizard/wiki)
+Link to Wiki: [Wiki](https://github.com/TINF20C/Team_4_Websockets-lwIP/wiki)
