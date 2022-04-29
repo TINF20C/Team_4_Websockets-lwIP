@@ -14,3 +14,6 @@ The further development is carried out by the following students:
 - Isabel Schwalm (System Architect)
 - Lucas Kaczynski (Technical Editor)
 - Maximilian Meier (Head of Development)
+
+# How to install?
+If you want to install lwIP on a Windows 10 machine, use our tutorial: [lwIP-Windows-Installation-Guide](https://github.com/TINF20C/Team_4_Websockets-lwIP/wiki/lwIP-Windows-Installation-Guide).
