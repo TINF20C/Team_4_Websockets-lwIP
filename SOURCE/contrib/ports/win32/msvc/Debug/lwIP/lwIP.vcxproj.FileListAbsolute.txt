@@ -1,0 +1,1 @@
+C:\Users\Maximilian Meier\OneDrive - Duale Hochschule Baden-Württemberg Stuttgart\Dokumente\4.Semester\SWE\lwipv2\lwip\contrib\ports\win32\msvc\Debug\lwIP\lwIP.lib
