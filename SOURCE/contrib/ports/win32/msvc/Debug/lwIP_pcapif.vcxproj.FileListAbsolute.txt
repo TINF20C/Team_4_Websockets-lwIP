@@ -1,0 +1,2 @@
+C:\Users\Maximilian Meier\OneDrive - Duale Hochschule Baden-Württemberg Stuttgart\Dokumente\3.Semester\SWE\lwipv2\lwip\contrib\ports\win32\msvc\Debug\lwIP pcapif.lib
+C:\Users\Maximilian Meier\OneDrive - Duale Hochschule Baden-Württemberg Stuttgart\Dokumente\4.Semester\SWE\lwipv2\lwip\contrib\ports\win32\msvc\Debug\lwIP pcapif.lib
