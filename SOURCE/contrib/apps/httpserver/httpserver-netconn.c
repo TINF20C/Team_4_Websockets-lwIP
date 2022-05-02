@@ -116,19 +116,7 @@ http_server_netconn_serve(struct netconn *conn)
         /* Send our HTML page */
         netconn_write(conn, http_index_html2, size - 1, NETCONN_NOCOPY);
     }
-  }
-  if (buflen >= 5 &&
-      buf[0] == 'G' &&
-      buf[1] == 'E' &&
-      buf[2] == 'T' &&
-      buf[3] == ' ' &&
-      buf[4] == '/' &&
-      buf[5] == 'w' &&
-      buf[6] == 's') {
-
-      httpd_websocket_register_callbacks(conn->pcb.tcp, NULL);
-      
-  }
+  
   /* Close the connection (server closes in HTTP) */
   netconn_close(conn);
   
