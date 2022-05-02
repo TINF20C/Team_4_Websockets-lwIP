@@ -97,7 +97,7 @@ http_server_netconn_serve(struct netconn *conn)
         char startBlock[] = "{ \"DeviceClass\": \"Windows PC\", \"Manufacturer\": \"lwIP - A Lightweight TCP/IP stack\"";
         char ipBlock[] = ", \"IP-Adress\": ";
         char secondBlock[] = ",\"Model\": null, \"ProductCode\": null, \"HardwareRevision\" : 1, \"SoftwareRevision\" : \"2.1.0\", \"SerialNumber\" : null, \"ProductInstanceUri\" : \"https://savannah.nongnu.org/projects/lwip/\", \"applicationSpecificTag\" : null, \"geolocation\": null, \"sysUpTime\" : null";
-        char endBlock[] = ", }";
+        char endBlock[] = " }";
        
         char *http_index_html2;
         int size=sizeof(startBlock)-1+sizeof(ipBlock)-1+j+1+sizeof(secondBlock)-1+sizeof(endBlock);
