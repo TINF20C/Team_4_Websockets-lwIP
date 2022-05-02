@@ -80,7 +80,6 @@ http_server_netconn_serve(struct netconn *conn)
         char ip[18]="";
         while(buf[i]) {
             if(buf[i]=='\n'&&buf[i+1]=='H') {
-                printf("%c",buf[i + 1]);
                 i+=7;
                 while(buf[i]!='\r') {
                     ip[0]='"';
