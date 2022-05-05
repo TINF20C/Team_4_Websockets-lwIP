@@ -182,7 +182,7 @@ static tWsHandler httpd_websocket_cb = NULL;
 static tWsOpenHandler httpd_websocket_open_cb = NULL;
 /* List of active WebSocket connections */
 static struct websocket_state* websocket_connections = NULL;
-#endif 
+#endif /* LWIP_HTTPD_SUPPORT_WEBSOCKET */
 
 typedef struct {
   const char *name;
@@ -2123,14 +2123,19 @@ http_parse_request(struct pbuf *inp, struct http_state *hs, struct altcp_pcb *pc
           int key_len = sizeof(WS_GUID) - 1 + len;
           unsigned char sha1sum[SHA1_BLOCK_SIZE];
           
-          sha1_context	ctx;
+          sha1_context ctx;
           sha1_starts(&ctx);
-          sha1_update(&ctx, (unsigned char *) key, key_len);
+          sha1_update(&ctx, (unsigned char*)key, key_len);
           sha1_finish(&ctx, sha1sum);
 
           /* Base64 encode */
           unsigned int olen = WS_BASE64_LEN;
-          olen = lwip_base64_encode(retval_ptr, sizeof(&retval_ptr), sha1sum, SHA1_BLOCK_SIZE);
+          //olen = base64_encode(sha1sum, retval_ptr, SHA1_BLOCK_SIZE, 0);
+          int targetlen = (4*SHA1_BLOCK_SIZE)/3;
+          while(targetlen%4!=0) {
+              targetlen++;
+          }
+          olen = lwip_base64_encode(retval_ptr, targetlen, sha1sum, SHA1_BLOCK_SIZE);
           if (olen >= 0) {
             LWIP_DEBUGF(HTTPD_DEBUG, ("Base64 encoded: %s\n", retval_ptr));
 

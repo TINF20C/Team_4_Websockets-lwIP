@@ -80,7 +80,6 @@ http_server_netconn_serve(struct netconn *conn)
         char ip[18]="";
         while(buf[i]) {
             if(buf[i]=='\n'&&buf[i+1]=='H') {
-                printf("%c",buf[i + 1]);
                 i+=7;
                 while(buf[i]!='\r') {
                     ip[0]='"';
@@ -94,19 +93,14 @@ http_server_netconn_serve(struct netconn *conn)
             i++;
         }
 
-        char startBlock[] = "{ \"DeviceClass\": \"Windows PC\", \"Manufacturer\": \"lwIP - A Lightweight TCP/IP stack\"";
-        char ipBlock[] = ", \"IP-Adress\": ";
-        char secondBlock[] = ",\"Model\": null, \"ProductCode\": null, \"HardwareRevision\" : 1, \"SoftwareRevision\" : \"2.1.0\", \"SerialNumber\" : null, \"ProductInstanceUri\" : \"https://savannah.nongnu.org/projects/lwip/\", \"applicationSpecificTag\" : null, \"geolocation\": null, \"sysUpTime\" : null";
-        char endBlock[] = ", }";
+        char startBlock[] = "{ \"DeviceClass\": \"Windows PC\", \"Manufacturer\": \"lwIP - A Lightweight TCP/IP stack\" , \"IP-Adress\": ";
+        char secondBlock[] = ",\"Model\": null, \"ProductCode\": null, \"HardwareRevision\" : 1, \"SoftwareRevision\" : \"2.1.0\", \"SerialNumber\" : null, \"ProductInstanceUri\" : \"https://savannah.nongnu.org/projects/lwip/\", \"applicationSpecificTag\" : null, \"geolocation\": null, \"sysUpTime\" : null }";
        
-        char *http_index_html2;
-        int size=sizeof(startBlock)-1+sizeof(ipBlock)-1+j+1+sizeof(secondBlock)-1+sizeof(endBlock);
-        http_index_html2 = (char*)malloc(size);
+        int size=sizeof(startBlock)-1+j+1+sizeof(secondBlock);
+        char *http_index_html2 = (char*)malloc(size);
         strcpy(http_index_html2,startBlock);
-        strcat(http_index_html2,ipBlock);
         strcat(http_index_html2,ip);
         strcat(http_index_html2,secondBlock);
-        strcat(http_index_html2,endBlock);
         /* Send the HTML header
                * subtract 1 from the size, since we dont send the \0 in the string
                * NETCONN_NOCOPY: our data is const static, so no need to copy it
@@ -116,18 +110,6 @@ http_server_netconn_serve(struct netconn *conn)
         /* Send our HTML page */
         netconn_write(conn, http_index_html2, size - 1, NETCONN_NOCOPY);
     }
-  }
-  if (buflen >= 5 &&
-      buf[0] == 'G' &&
-      buf[1] == 'E' &&
-      buf[2] == 'T' &&
-      buf[3] == ' ' &&
-      buf[4] == '/' &&
-      buf[5] == 'w' &&
-      buf[6] == 's') {
-
-      httpd_websocket_register_callbacks(conn->pcb.tcp, NULL);
-      
   }
   /* Close the connection (server closes in HTTP) */
   netconn_close(conn);
