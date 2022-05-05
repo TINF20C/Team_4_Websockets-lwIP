@@ -704,6 +704,14 @@ static void
 pcapif_low_level_init(struct netif *netif)
 {
   u8_t my_mac_addr[ETH_HWADDR_LEN] = LWIP_MAC_ADDR_BASE;
+  printf("Pls input the number of the networkadapter you want to use: ");
+  //Allows for manual selection of the network adapter
+  char term;
+  if (scanf("%d%c", &packetAdapter, &term) != 2 || term != '\n'
+    && !(packetAdapter>0 && packetAdapter<25)) {
+    printf("Invalid Adapter Input");
+    abort();
+  }
   int adapter_num = PACKET_LIB_ADAPTER_NR;
   struct pcapif_private *pa;
 #ifdef PACKET_LIB_GET_ADAPTER_NETADDRESS
