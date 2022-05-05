@@ -93,8 +93,15 @@ http_server_netconn_serve(struct netconn *conn)
             i++;
         }
 
+<<<<<<< HEAD
         char startBlock[] = "{ \"DeviceClass\": \"Windows PC\", \"Manufacturer\": \"lwIP - A Lightweight TCP/IP stack\" , \"IP-Adress\": ";
         char secondBlock[] = ",\"Model\": null, \"ProductCode\": null, \"HardwareRevision\" : 1, \"SoftwareRevision\" : \"2.1.0\", \"SerialNumber\" : null, \"ProductInstanceUri\" : \"https://savannah.nongnu.org/projects/lwip/\", \"applicationSpecificTag\" : null, \"geolocation\": null, \"sysUpTime\" : null }";
+=======
+        char startBlock[] = "{ \"DeviceClass\": \"Windows PC\", \"Manufacturer\": \"lwIP - A Lightweight TCP/IP stack\"";
+        char ipBlock[] = ", \"IP-Adress\": ";
+        char secondBlock[] = ",\"Model\": null, \"ProductCode\": null, \"HardwareRevision\" : 1, \"SoftwareRevision\" : \"2.1.0\", \"SerialNumber\" : null, \"ProductInstanceUri\" : \"https://savannah.nongnu.org/projects/lwip/\", \"applicationSpecificTag\" : null, \"geolocation\": null, \"sysUpTime\" : null";
+        char endBlock[] = " }";
+>>>>>>> 8cff96c877433f301088dacdc4ab94e6d1358ade
        
         int size=sizeof(startBlock)-1+j+1+sizeof(secondBlock);
         char *http_index_html2 = (char*)malloc(size);
@@ -110,7 +117,11 @@ http_server_netconn_serve(struct netconn *conn)
         /* Send our HTML page */
         netconn_write(conn, http_index_html2, size - 1, NETCONN_NOCOPY);
     }
+<<<<<<< HEAD
   }
+=======
+  
+>>>>>>> 8cff96c877433f301088dacdc4ab94e6d1358ade
   /* Close the connection (server closes in HTTP) */
   netconn_close(conn);
   
