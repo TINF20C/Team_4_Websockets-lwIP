@@ -1,0 +1,1 @@
+This is a rudimentary message used to test the echo functionality.
